@@ -1,5 +1,5 @@
 <template>
-	<view class="music-head">
+	<view class="music-head" :style="{ color }">
 		<view v-if="icon" class="music-head-icon">
 			<text class="iconfont iconzuojiantou-copy" @tap="handleToBack"></text>
 			|
@@ -10,9 +10,11 @@
 </template>
 
 <script>
+	import '@/common/iconfont.css'
+
 	export default {
 		name: "music-head",
-		props: ['title', 'icon'],
+		props: ['title', 'icon', 'color'],
 		data() {
 			return {
 

@@ -8,7 +8,7 @@
 					<input type="text" placeholder="搜索歌曲">
 				</view>
 				<view class="index-list">
-					<view class="index-list-item" v-for="(item, index) in topList" :key="index">
+					<view class="index-list-item" v-for="(item, index) in topList" :key="index" @tap="handleToList(item.id)">
 						<view class="index-list-img">
 							<image :src="item.coverImgUrl" mode=""></image>
 							<text>{{ item.updateFrequency }}</text>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-	import '@/common/iconfont.css';
+	// import '@/common/iconfont.css';
 	import MusicHead from '@/components/music-head/music-head.vue';
 	import {
 		getTopList
@@ -47,7 +47,11 @@
 			if (res.length) this.topList = res;
 		},
 		methods: {
-
+			handleToList(id) {
+				uni.navigateTo({
+					url: '/pages/list/list?id=' + id,
+				});
+			}
 		}
 	}
 </script>
